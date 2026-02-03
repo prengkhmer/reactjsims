@@ -34,7 +34,7 @@
 
 // export default instance;
 
-// src/api/axios.js (Create React App)
+// // src/api/axios.js (Create React App)
 // import axios from "axios";
 
 // const API_URL = process.env.REACT_APP_API_URL || "http://localhost:3001";
@@ -72,8 +72,8 @@
 //       url.includes("/api/user/sendOtp") ||
 //       url.includes("/api/user/verifyOtp") ||
 //       url.includes("/api/user/resetPassword") ||
-//       url.includes("/login") ||
-//       url.includes("/register");
+//       url.includes("/api/login") ||
+//       url.includes("/api/register");
 
 //     if (error.response?.status === 401 && !isPublic) {
 //       localStorage.removeItem("token");
@@ -94,7 +94,7 @@ import axios from "axios";
 const API_ORIGIN = process.env.REACT_APP_API_URL || "http://localhost:3001";
 
 const instance = axios.create({
-  baseURL: `${API_ORIGIN}/api`, // ✅ important
+  baseURL: API_URL,  
   timeout: 15000,
   headers: { "Content-Type": "application/json" },
 });
@@ -119,11 +119,11 @@ instance.interceptors.response.use(
 
     // ✅ public endpoints (no redirect)
     const isPublic =
-      url.includes("/user/sendOtp") ||
-      url.includes("/user/verifyOtp") ||
-      url.includes("/user/resetPassword") ||
-      url.includes("/login") ||
-      url.includes("/register");
+       url.includes("/api/user/sendOtp") ||
+      url.includes("/api/user/verifyOtp") ||
+      url.includes("/api/user/resetPassword") ||
+      url.includes("/api/login") ||
+      url.includes("/api/register");
 
     if (error.response?.status === 401 && !isPublic) {
       localStorage.removeItem("token");
