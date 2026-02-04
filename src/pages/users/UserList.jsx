@@ -344,6 +344,7 @@ const UserList = () => {
               </button>
 
               {canCreate && (
+                <SuperAdminOnly >
                 <Link
                   to="/users/new"
                   className="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white px-6 py-3 rounded-xl font-medium flex items-center justify-center gap-2 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
@@ -351,6 +352,7 @@ const UserList = () => {
                   <Plus className="h-5 w-5" />
                   បន្ថែមអ្នកប្រើប្រាស់
                 </Link>
+                </SuperAdminOnly>
               )}
             </form>
           </div>
