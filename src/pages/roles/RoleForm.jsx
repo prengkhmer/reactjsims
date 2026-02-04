@@ -32,7 +32,7 @@ const RoleForm = () => {
 
   const fetchPermissions = async () => {
     try {
-      const response = await axios.get("/api/permissions");
+      const response = await axios.get("/api/user/permissions");
       if (response.data) {
         setPermissions(response.data.permissions || response.data || []);
       }

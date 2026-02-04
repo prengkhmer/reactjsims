@@ -36,7 +36,7 @@ const UserForm = () => {
   const [roles, setRoles] = useState([]);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const [imagePreview, setImagePreview] = useState('');
+  const [imagePreview, setImagePreview] = useState("");
 
   const [formData, setFormData] = useState({
     name: "",
@@ -138,16 +138,16 @@ const UserForm = () => {
     if (file) {
       // Check file size (max 5MB)
       if (file.size > 5 * 1024 * 1024) {
-        setError('រូបភាពធំពេក។ សូមជ្រើសរើសរូបភាពតូចជាង 5MB');
+        setError("រូបភាពធំពេក។ សូមជ្រើសរើសរូបភាពតូចជាង 5MB");
         return;
       }
-      
+
       const reader = new FileReader();
       reader.onloadend = () => {
         setImagePreview(reader.result);
-        setFormData(prev => ({
+        setFormData((prev) => ({
           ...prev,
-          photo: reader.result
+          photo: reader.result,
         }));
       };
       reader.readAsDataURL(file);
@@ -172,7 +172,7 @@ const UserForm = () => {
 
     // Validate that selected role exists in available roles
     const selectedRoleExists = roles.some(
-      (role) => role.id == formData.role_id
+      (role) => role.id == formData.role_id,
     );
     if (!selectedRoleExists && roles.length > 0) {
       setError("តួនាទីដែលជ្រើសរើសមិនត្រឹមត្រូវទេ");
@@ -256,7 +256,7 @@ const UserForm = () => {
         setError(
           response?.message ||
             response?.error ||
-            "មិនអាចរក្សាទុកអ្នកប្រើប្រាស់បានទេ"
+            "មិនអាចរក្សាទុកអ្នកប្រើប្រាស់បានទេ",
         );
       }
     } catch (error) {
@@ -328,15 +328,15 @@ const UserForm = () => {
               {isView
                 ? "មើលអ្នកប្រើប្រាស់"
                 : isEdit
-                ? "កែប្រែអ្នកប្រើប្រាស់"
-                : "បន្ថែមអ្នកប្រើប្រាស់ថ្មី"}
+                  ? "កែប្រែអ្នកប្រើប្រាស់"
+                  : "បន្ថែមអ្នកប្រើប្រាស់ថ្មី"}
             </h2>
             <p className="text-gray-600 text-sm mt-1">
               {isView
                 ? "ព័ត៌មានលម្អិតអ្នកប្រើប្រាស់"
                 : isEdit
-                ? "កែប្រែព័ត៌មានអ្នកប្រើប្រាស់"
-                : "បញ្ចូលព័ត៌មានអ្នកប្រើប្រាស់ថ្មី"}
+                  ? "កែប្រែព័ត៌មានអ្នកប្រើប្រាស់"
+                  : "បញ្ចូលព័ត៌មានអ្នកប្រើប្រាស់ថ្មី"}
             </p>
           </div>
         </div>
@@ -385,7 +385,9 @@ const UserForm = () => {
                         className="hidden"
                       />
                     </label>
-                    <p className="text-xs text-gray-500">រូបភាពត្រូវតែតូចជាង 5MB</p>
+                    <p className="text-xs text-gray-500">
+                      រូបភាពត្រូវតែតូចជាង 5MB
+                    </p>
                   </div>
                 </div>
               )}
@@ -394,7 +396,11 @@ const UserForm = () => {
               {isView && formData.photo && (
                 <div className="mb-6 flex justify-center">
                   <img
-                    src={formData.photo.startsWith('data:') ? formData.photo : `data:image/jpeg;base64,${formData.photo}`}
+                    src={
+                      formData.photo.startsWith("data:")
+                        ? formData.photo
+                        : `data:image/jpeg;base64,${formData.photo}`
+                    }
                     alt={formData.name}
                     className="w-32 h-32 rounded-full object-cover border-4 border-gray-200"
                   />

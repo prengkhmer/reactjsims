@@ -27,6 +27,7 @@ import {
   canCreateUser,
   canEditUser,
   canDeleteUser,
+  SuperAdminOnly,
 } from "../../utils/permissions";
 import { getUsers, deleteUser, updateUser } from "../../api/user.api";
 
@@ -520,13 +521,15 @@ const UserList = () => {
                               </Link>
                             )}
                             {canEdit && (
-                              <Link
-                                to={`/users/edit/${user.id}`}
-                                className="p-2 text-indigo-600 hover:bg-indigo-100 rounded-lg transition-all transform hover:scale-110"
-                                title="កែប្រែ"
-                              >
-                                <Edit className="h-5 w-5" />
-                              </Link>
+                              <SuperAdminOnly>
+                                <Link
+                                  to={`/users/edit/${user.id}`}
+                                  className="p-2 text-indigo-600 hover:bg-indigo-100 rounded-lg transition-all transform hover:scale-110"
+                                  title="កែប្រែ"
+                                >
+                                  <Edit className="h-5 w-5" />
+                                </Link>
+                              </SuperAdminOnly>
                             )}
                             {canDelete && (
                               <button

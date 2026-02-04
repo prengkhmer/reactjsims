@@ -94,7 +94,7 @@ import axios from "axios";
 const API_ORIGIN = process.env.REACT_APP_API_URL || "http://localhost:3001";
 
 const instance = axios.create({
-  baseURL: `${API_ORIGIN}`,   // ✅ important
+  baseURL: `${API_ORIGIN}`, // ✅ important
   timeout: 15000,
   headers: { "Content-Type": "application/json" },
 });
@@ -119,7 +119,7 @@ instance.interceptors.response.use(
 
     // ✅ public endpoints (no redirect)
     const isPublic =
-       url.includes("/api/user/sendOtp") ||
+      url.includes("/api/user/sendOtp") ||
       url.includes("/api/user/verifyOtp") ||
       url.includes("/api/user/resetPassword") ||
       url.includes("/api/login") ||
